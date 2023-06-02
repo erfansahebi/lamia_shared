@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "./services/auth/proto";
+
+service AuthService {
+  rpc RequestForOTP(RequestForOTPRequest) returns (RequestForOTPResponse) {}
+  rpc VerifyOTP(VerifyOTPRequest) returns (VerifyOTPResponse) {}
+}
+
+
+// Request For OTP
+
+message RequestForOTPRequest {
+  string phone_number = 1;
+}
+
+message RequestForOTPResponse {
+  string token = 1;
+  uint32 ttl = 2;
+}
+
+// Verify OTP
+
+message VerifyOTPRequest {
+  string token = 1;
+  string code = 2;
+}
+
+message  VerifyOTPResponse {
+  string jwt = 1;
+}
