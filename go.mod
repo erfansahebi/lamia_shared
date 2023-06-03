@@ -3,7 +3,9 @@ module github.com/erfansahebi/lamia_shared
 go 1.20
 
 require (
+	github.com/gabriel-vasile/mimetype v1.4.2
 	github.com/golang/protobuf v1.5.3
+	github.com/google/uuid v1.3.0
 	google.golang.org/grpc v1.55.0
 )
 
