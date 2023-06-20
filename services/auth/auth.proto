@@ -8,6 +8,7 @@ service AuthService {
   rpc Register(RegisterRequest) returns (AuthenticationResponse) {}
   rpc Login(LoginRequest) returns (AuthenticationResponse) {}
   rpc Authenticate(AuthenticateRequest) returns (AuthenticateResponse) {}
+  rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
 }
 
 message UserStruct {
@@ -44,4 +45,14 @@ message AuthenticateRequest {
 
 message AuthenticateResponse {
   string id = 1;
+}
+
+// Get User
+
+message GetUserRequest {
+  string user_id = 1;
+}
+
+message GetUserResponse {
+  UserStruct user = 1;
 }
