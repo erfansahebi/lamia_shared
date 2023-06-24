@@ -19,7 +19,7 @@ type Config struct {
 	}
 	Migration struct {
 		SeqDigits int    `env:"MIGRATION_SEQ_DIGITS"`
-		Directory string `env:"MIGRATION_PG_MIGRATION_DIR"`
+		Directory string `env:"MIGRATION_DIRECTORY"`
 	}
 }
 
