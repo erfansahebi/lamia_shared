@@ -18,8 +18,8 @@ type Config struct {
 		PoolHealthCheckPeriod string `env:"PG_POOL_HEALTH_CHECK_PERIOD"`
 	}
 	Migration struct {
-		SeqDigits int    `env:"SEQ_DIGITS"`
-		Directory string `env:"PG_MIGRATION_DIR"`
+		SeqDigits int    `env:"MIGRATION_SEQ_DIGITS"`
+		Directory string `env:"MIGRATION_PG_MIGRATION_DIR"`
 	}
 }
 
