@@ -41,7 +41,7 @@ message LoginRequest {
 // Logout
 
 message LogoutRequest {
-  string user_id = 1;
+  string authorization_token = 1;
 }
 
 message LogoutResponse {
