@@ -21,7 +21,7 @@ message UserStruct {
 
 message AuthenticationResponse {
   UserStruct user = 1;
-  string jwt = 2;
+  string authorization_token = 2;
 }
 
 // Register
@@ -40,7 +40,7 @@ message LoginRequest {
 // Authenticate
 
 message AuthenticateRequest {
-  string jwt = 1;
+  string authorization_token = 1;
 }
 
 message AuthenticateResponse {
