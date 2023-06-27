@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "lamia_shared"
+version = "1.0.21"
+description = "Lamia Shared Project"
+authors = ["Erfan Sahebi <erfansahebivayghan@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[build-system]
+requires = [
+    "poetry-core",
+    "protobuf",
+    "grpcio",
+    "grpcio-tools",
+]
+build-backend = "poetry.core.masonry.api"
