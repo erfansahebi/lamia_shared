@@ -17,5 +17,6 @@ requires = [
     "protobuf",
     "grpcio",
     "grpcio-tools",
+    "pre-commit"
 ]
 build-backend = "poetry.core.masonry.api"
