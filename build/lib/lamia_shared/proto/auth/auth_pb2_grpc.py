@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from services.auth import auth_pb2 as services_dot_auth_dot_auth__pb2
+from proto.auth import auth_pb2 as proto_dot_auth_dot_auth__pb2
 
 
 class AuthServiceStub(object):
@@ -16,28 +16,28 @@ class AuthServiceStub(object):
         """
         self.Register = channel.unary_unary(
                 '/auth.AuthService/Register',
-                request_serializer=services_dot_auth_dot_auth__pb2.RegisterRequest.SerializeToString,
-                response_deserializer=services_dot_auth_dot_auth__pb2.AuthenticationResponse.FromString,
+                request_serializer=proto_dot_auth_dot_auth__pb2.RegisterRequest.SerializeToString,
+                response_deserializer=proto_dot_auth_dot_auth__pb2.AuthenticationResponse.FromString,
                 )
         self.Login = channel.unary_unary(
                 '/auth.AuthService/Login',
-                request_serializer=services_dot_auth_dot_auth__pb2.LoginRequest.SerializeToString,
-                response_deserializer=services_dot_auth_dot_auth__pb2.AuthenticationResponse.FromString,
+                request_serializer=proto_dot_auth_dot_auth__pb2.LoginRequest.SerializeToString,
+                response_deserializer=proto_dot_auth_dot_auth__pb2.AuthenticationResponse.FromString,
                 )
         self.Logout = channel.unary_unary(
                 '/auth.AuthService/Logout',
-                request_serializer=services_dot_auth_dot_auth__pb2.LogoutRequest.SerializeToString,
-                response_deserializer=services_dot_auth_dot_auth__pb2.LogoutResponse.FromString,
+                request_serializer=proto_dot_auth_dot_auth__pb2.LogoutRequest.SerializeToString,
+                response_deserializer=proto_dot_auth_dot_auth__pb2.LogoutResponse.FromString,
                 )
         self.Authenticate = channel.unary_unary(
                 '/auth.AuthService/Authenticate',
-                request_serializer=services_dot_auth_dot_auth__pb2.AuthenticateRequest.SerializeToString,
-                response_deserializer=services_dot_auth_dot_auth__pb2.AuthenticateResponse.FromString,
+                request_serializer=proto_dot_auth_dot_auth__pb2.AuthenticateRequest.SerializeToString,
+                response_deserializer=proto_dot_auth_dot_auth__pb2.AuthenticateResponse.FromString,
                 )
         self.GetUser = channel.unary_unary(
                 '/auth.AuthService/GetUser',
-                request_serializer=services_dot_auth_dot_auth__pb2.GetUserRequest.SerializeToString,
-                response_deserializer=services_dot_auth_dot_auth__pb2.GetUserResponse.FromString,
+                request_serializer=proto_dot_auth_dot_auth__pb2.GetUserRequest.SerializeToString,
+                response_deserializer=proto_dot_auth_dot_auth__pb2.GetUserResponse.FromString,
                 )
 
 
@@ -79,28 +79,28 @@ def add_AuthServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'Register': grpc.unary_unary_rpc_method_handler(
                     servicer.Register,
-                    request_deserializer=services_dot_auth_dot_auth__pb2.RegisterRequest.FromString,
-                    response_serializer=services_dot_auth_dot_auth__pb2.AuthenticationResponse.SerializeToString,
+                    request_deserializer=proto_dot_auth_dot_auth__pb2.RegisterRequest.FromString,
+                    response_serializer=proto_dot_auth_dot_auth__pb2.AuthenticationResponse.SerializeToString,
             ),
             'Login': grpc.unary_unary_rpc_method_handler(
                     servicer.Login,
-                    request_deserializer=services_dot_auth_dot_auth__pb2.LoginRequest.FromString,
-                    response_serializer=services_dot_auth_dot_auth__pb2.AuthenticationResponse.SerializeToString,
+                    request_deserializer=proto_dot_auth_dot_auth__pb2.LoginRequest.FromString,
+                    response_serializer=proto_dot_auth_dot_auth__pb2.AuthenticationResponse.SerializeToString,
             ),
             'Logout': grpc.unary_unary_rpc_method_handler(
                     servicer.Logout,
-                    request_deserializer=services_dot_auth_dot_auth__pb2.LogoutRequest.FromString,
-                    response_serializer=services_dot_auth_dot_auth__pb2.LogoutResponse.SerializeToString,
+                    request_deserializer=proto_dot_auth_dot_auth__pb2.LogoutRequest.FromString,
+                    response_serializer=proto_dot_auth_dot_auth__pb2.LogoutResponse.SerializeToString,
             ),
             'Authenticate': grpc.unary_unary_rpc_method_handler(
                     servicer.Authenticate,
-                    request_deserializer=services_dot_auth_dot_auth__pb2.AuthenticateRequest.FromString,
-                    response_serializer=services_dot_auth_dot_auth__pb2.AuthenticateResponse.SerializeToString,
+                    request_deserializer=proto_dot_auth_dot_auth__pb2.AuthenticateRequest.FromString,
+                    response_serializer=proto_dot_auth_dot_auth__pb2.AuthenticateResponse.SerializeToString,
             ),
             'GetUser': grpc.unary_unary_rpc_method_handler(
                     servicer.GetUser,
-                    request_deserializer=services_dot_auth_dot_auth__pb2.GetUserRequest.FromString,
-                    response_serializer=services_dot_auth_dot_auth__pb2.GetUserResponse.SerializeToString,
+                    request_deserializer=proto_dot_auth_dot_auth__pb2.GetUserRequest.FromString,
+                    response_serializer=proto_dot_auth_dot_auth__pb2.GetUserResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -124,8 +124,8 @@ class AuthService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/auth.AuthService/Register',
-            services_dot_auth_dot_auth__pb2.RegisterRequest.SerializeToString,
-            services_dot_auth_dot_auth__pb2.AuthenticationResponse.FromString,
+            proto_dot_auth_dot_auth__pb2.RegisterRequest.SerializeToString,
+            proto_dot_auth_dot_auth__pb2.AuthenticationResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -141,8 +141,8 @@ class AuthService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/auth.AuthService/Login',
-            services_dot_auth_dot_auth__pb2.LoginRequest.SerializeToString,
-            services_dot_auth_dot_auth__pb2.AuthenticationResponse.FromString,
+            proto_dot_auth_dot_auth__pb2.LoginRequest.SerializeToString,
+            proto_dot_auth_dot_auth__pb2.AuthenticationResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -158,8 +158,8 @@ class AuthService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/auth.AuthService/Logout',
-            services_dot_auth_dot_auth__pb2.LogoutRequest.SerializeToString,
-            services_dot_auth_dot_auth__pb2.LogoutResponse.FromString,
+            proto_dot_auth_dot_auth__pb2.LogoutRequest.SerializeToString,
+            proto_dot_auth_dot_auth__pb2.LogoutResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -175,8 +175,8 @@ class AuthService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/auth.AuthService/Authenticate',
-            services_dot_auth_dot_auth__pb2.AuthenticateRequest.SerializeToString,
-            services_dot_auth_dot_auth__pb2.AuthenticateResponse.FromString,
+            proto_dot_auth_dot_auth__pb2.AuthenticateRequest.SerializeToString,
+            proto_dot_auth_dot_auth__pb2.AuthenticateResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -192,7 +192,7 @@ class AuthService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/auth.AuthService/GetUser',
-            services_dot_auth_dot_auth__pb2.GetUserRequest.SerializeToString,
-            services_dot_auth_dot_auth__pb2.GetUserResponse.FromString,
+            proto_dot_auth_dot_auth__pb2.GetUserRequest.SerializeToString,
+            proto_dot_auth_dot_auth__pb2.GetUserResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

@@ -1,15 +1,21 @@
-#proto:
-#	protoc services/**/*.proto --go_out=plugins=grpc:.
-
-PROTO_FILES := services/**/
-GO_OUT := plugins=grpc:.
-PYTHON_OUT := .
+PROTO_FILES := proto/**/
+GO_OUT := plugins=grpc:go
+PYTHON_OUT := lamia_shared/
 
 .PHONY: generate-python
 generate-python:
 	@echo "--- Generate Python client code ... ---"
-	find $(PROTO_FILES) -name '*.proto' -exec python3 -m grpc_tools.protoc -I=$(PYTHON_OUT) --python_out=$(PYTHON_OUT) --grpc_python_out=$(PYTHON_OUT) {} +
+	python3 -m grpc_tools.protoc -I=. --python_out=$(PYTHON_OUT) --grpc_python_out=$(PYTHON_OUT) $(PROTO_FILES)*.proto
 	@echo "--- Python client generated ---"
+	@echo "--- Reformat Python generated codes ... ---"
+	@find $(PYTHON_OUT)proto/ -type f -name "*_pb2_grpc.py" -exec sed -i'' -e 's/from proto.\([^ ]*\) import \(.*\)/from . import \2/g' {} +
+	@echo "--- Reformat Python generated codes finished ---"
+
+.PHONY: clean-python
+clean-python:
+	@echo "--- Cleaning Python generated codes ... ---"
+	rm -rf lamia_shared/proto/**/*_pb*.py
+	@echo "--- Cleaning Python generated codes finished ---"
 
 .PHONY: generate-go
 generate-go:
@@ -17,15 +23,17 @@ generate-go:
 	protoc $(PROTO_FILES)*.proto --go_out=$(GO_OUT)
 	@echo "--- Go client generated ---"
 
+.PHONY: clean-go
+clean-go:
+	@echo "--- Cleaning go generated codes ... ---"
+	rm -rf go/proto/**/*.pb.go
+	@echo "--- Cleaning go generated codes finished ---"
+
 .PHONY: generate-all
 generate-all: generate-python generate-go
 
 .PHONY: regenerate-all
-regenerate-all: clean generate-all
+regenerate-all: clean-all generate-all
 
-.PHONY: clean
-clean:
-	@echo "--- Cleaning generated codes ... ---"
-	rm -rf services/**/*.go
-	rm -rf services/**/*.py
-	@echo "--- Cleaning generated codes finished ---"
+.PHONY: clean-all
+clean-all: clean-python clean-go
