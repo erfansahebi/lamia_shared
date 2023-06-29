@@ -1,5 +1,5 @@
 PROTO_FILES := proto/**/
-GO_OUT := plugins=grpc:go
+GO_OUT := =plugins=grpc:go/
 PYTHON_OUT := lamia_shared/
 
 .PHONY: generate-python
@@ -20,7 +20,7 @@ clean-python:
 .PHONY: generate-go
 generate-go:
 	@echo "--- Generate Go client code ... ---"
-	protoc $(PROTO_FILES)*.proto --go_out=$(GO_OUT)
+	@find $(PROTO_FILES) -type f -name "*.proto" -exec protoc --go_out=$(GO_OUT) {} \;
 	@echo "--- Go client generated ---"
 
 .PHONY: clean-go

@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package shop;
+
+service ShopService {
+  rpc Create(CreateRequest) returns (CreateResponse) {}
+  rpc Get(GetRequest) returns (GetResponse) {}
+  rpc GetByUserID(GetByUserIDRequest) returns (GetByUserIDResponse) {}
+}
+
+message ShopStruct {
+  string id = 1;
+  string user_id = 2;
+  string name = 3;
+}
+
+// Create
+
+message CreateRequest {
+  ShopStruct shop = 1;
+}
+
+message CreateResponse {
+  ShopStruct shop = 1;
+}
+
+// Get
+
+message GetRequest {
+  string id = 1;
+}
+
+message GetResponse {
+  ShopStruct shop = 1;
+}
+
+// Get By UserID
+
+
+message GetByUserIDRequest {
+  string id = 1;
+}
+
+message GetByUserIDResponse {
+  repeated ShopStruct shop = 1;
+}
