@@ -1,5 +1,5 @@
 PROTO_FILES := proto/**/
-GO_OUT := =plugins=grpc:go/
+GO_OUT := plugins=grpc:go/
 PYTHON_OUT := lamia_shared/
 
 .PHONY: generate-python

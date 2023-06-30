@@ -4,8 +4,12 @@
 package shop
 
 import (
+	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
+	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -343,4 +347,156 @@ var fileDescriptor_846ffd47eaa9ea2a = []byte{
 	0x5d, 0x3d, 0x91, 0x63, 0x34, 0x13, 0x53, 0xb8, 0xae, 0xd9, 0x5a, 0x35, 0x3a, 0xff, 0x25, 0xd3,
 	0xb8, 0x3c, 0xfb, 0xf2, 0xdf, 0x8c, 0x3e, 0x03, 0x00, 0x00, 0xff, 0xff, 0x92, 0x35, 0x87, 0x66,
 	0x50, 0x02, 0x00, 0x00,
+}
+
+// Reference imports to suppress errors if they are not otherwise used.
+var _ context.Context
+var _ grpc.ClientConnInterface
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+const _ = grpc.SupportPackageIsVersion6
+
+// ShopServiceClient is the client API for ShopService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
+type ShopServiceClient interface {
+	Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error)
+	Get(ctx context.Context, in *GetRequest, opts ...grpc.CallOption) (*GetResponse, error)
+	GetByUserID(ctx context.Context, in *GetByUserIDRequest, opts ...grpc.CallOption) (*GetByUserIDResponse, error)
+}
+
+type shopServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewShopServiceClient(cc grpc.ClientConnInterface) ShopServiceClient {
+	return &shopServiceClient{cc}
+}
+
+func (c *shopServiceClient) Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error) {
+	out := new(CreateResponse)
+	err := c.cc.Invoke(ctx, "/shop.ShopService/Create", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *shopServiceClient) Get(ctx context.Context, in *GetRequest, opts ...grpc.CallOption) (*GetResponse, error) {
+	out := new(GetResponse)
+	err := c.cc.Invoke(ctx, "/shop.ShopService/Get", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *shopServiceClient) GetByUserID(ctx context.Context, in *GetByUserIDRequest, opts ...grpc.CallOption) (*GetByUserIDResponse, error) {
+	out := new(GetByUserIDResponse)
+	err := c.cc.Invoke(ctx, "/shop.ShopService/GetByUserID", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// ShopServiceServer is the server API for ShopService service.
+type ShopServiceServer interface {
+	Create(context.Context, *CreateRequest) (*CreateResponse, error)
+	Get(context.Context, *GetRequest) (*GetResponse, error)
+	GetByUserID(context.Context, *GetByUserIDRequest) (*GetByUserIDResponse, error)
+}
+
+// UnimplementedShopServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedShopServiceServer struct {
+}
+
+func (*UnimplementedShopServiceServer) Create(ctx context.Context, req *CreateRequest) (*CreateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
+}
+func (*UnimplementedShopServiceServer) Get(ctx context.Context, req *GetRequest) (*GetResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
+}
+func (*UnimplementedShopServiceServer) GetByUserID(ctx context.Context, req *GetByUserIDRequest) (*GetByUserIDResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetByUserID not implemented")
+}
+
+func RegisterShopServiceServer(s *grpc.Server, srv ShopServiceServer) {
+	s.RegisterService(&_ShopService_serviceDesc, srv)
+}
+
+func _ShopService_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ShopServiceServer).Create(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/shop.ShopService/Create",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ShopServiceServer).Create(ctx, req.(*CreateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ShopService_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ShopServiceServer).Get(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/shop.ShopService/Get",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ShopServiceServer).Get(ctx, req.(*GetRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ShopService_GetByUserID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetByUserIDRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ShopServiceServer).GetByUserID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/shop.ShopService/GetByUserID",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ShopServiceServer).GetByUserID(ctx, req.(*GetByUserIDRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _ShopService_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "shop.ShopService",
+	HandlerType: (*ShopServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "Create",
+			Handler:    _ShopService_Create_Handler,
+		},
+		{
+			MethodName: "Get",
+			Handler:    _ShopService_Get_Handler,
+		},
+		{
+			MethodName: "GetByUserID",
+			Handler:    _ShopService_GetByUserID_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "proto/shop/shop.proto",
 }
