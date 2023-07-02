@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='lamia_shared',
-    version='1.0.27',
+    version='1.0.28',
     description='Lamia Shared Library',
     author='Erfan Sahebi',
     packages=find_packages(),
