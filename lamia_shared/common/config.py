@@ -24,9 +24,19 @@ class Database:
     Port: str
     Username: str
     Password: str
-    PoolMaxConnections: str
-    PoolMinConnections: str
+    PoolMaxConnections: int
+    PoolMinConnections: int
     PoolHealthCheckPeriod: str
+
+    def __init__(self):
+        self.Name = env['PG_DB']
+        self.Host = env['PG_HOST']
+        self.Port = env['PG_PORT']
+        self.Username = env['PG_USER']
+        self.Password = env['PG_PASSWORD']
+        self.PoolMaxConnections = int(env['PG_POOL_MAX_CONNECTIONS'])
+        self.PoolMinConnections = int(env['PG_POOL_MIN_CONNECTIONS'])
+        self.PoolHealthCheckPeriod = env['PG_POOL_HEALTH_CHECK_PERIOD']
 
 
 class Server:
