@@ -5,7 +5,6 @@ package shop;
 service ShopService {
   rpc Create(CreateRequest) returns (CreateResponse) {}
   rpc Get(GetRequest) returns (GetResponse) {}
-  rpc GetByUserID(GetByUserIDRequest) returns (GetByUserIDResponse) {}
 }
 
 message ShopStruct {
@@ -32,15 +31,4 @@ message GetRequest {
 
 message GetResponse {
   ShopStruct shop = 1;
-}
-
-// Get By UserID
-
-
-message GetByUserIDRequest {
-  string id = 1;
-}
-
-message GetByUserIDResponse {
-  repeated ShopStruct shop = 1;
 }

@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15proto/shop/shop.proto\x12\x04shop\"7\n\nShopStruct\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0f\n\x07user_id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\"/\n\rCreateRequest\x12\x1e\n\x04shop\x18\x01 \x01(\x0b\x32\x10.shop.ShopStruct\"0\n\x0e\x43reateResponse\x12\x1e\n\x04shop\x18\x01 \x01(\x0b\x32\x10.shop.ShopStruct\"\x18\n\nGetRequest\x12\n\n\x02id\x18\x01 \x01(\t\"-\n\x0bGetResponse\x12\x1e\n\x04shop\x18\x01 \x01(\x0b\x32\x10.shop.ShopStruct\" \n\x12GetByUserIDRequest\x12\n\n\x02id\x18\x01 \x01(\t\"5\n\x13GetByUserIDResponse\x12\x1e\n\x04shop\x18\x01 \x03(\x0b\x32\x10.shop.ShopStruct2\xb8\x01\n\x0bShopService\x12\x35\n\x06\x43reate\x12\x13.shop.CreateRequest\x1a\x14.shop.CreateResponse\"\x00\x12,\n\x03Get\x12\x10.shop.GetRequest\x1a\x11.shop.GetResponse\"\x00\x12\x44\n\x0bGetByUserID\x12\x18.shop.GetByUserIDRequest\x1a\x19.shop.GetByUserIDResponse\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15proto/shop/shop.proto\x12\x04shop\"7\n\nShopStruct\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0f\n\x07user_id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\"/\n\rCreateRequest\x12\x1e\n\x04shop\x18\x01 \x01(\x0b\x32\x10.shop.ShopStruct\"0\n\x0e\x43reateResponse\x12\x1e\n\x04shop\x18\x01 \x01(\x0b\x32\x10.shop.ShopStruct\"\x18\n\nGetRequest\x12\n\n\x02id\x18\x01 \x01(\t\"-\n\x0bGetResponse\x12\x1e\n\x04shop\x18\x01 \x01(\x0b\x32\x10.shop.ShopStruct2r\n\x0bShopService\x12\x35\n\x06\x43reate\x12\x13.shop.CreateRequest\x1a\x14.shop.CreateResponse\"\x00\x12,\n\x03Get\x12\x10.shop.GetRequest\x1a\x11.shop.GetResponse\"\x00\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -31,10 +31,6 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['_GETREQUEST']._serialized_end=211
   _globals['_GETRESPONSE']._serialized_start=213
   _globals['_GETRESPONSE']._serialized_end=258
-  _globals['_GETBYUSERIDREQUEST']._serialized_start=260
-  _globals['_GETBYUSERIDREQUEST']._serialized_end=292
-  _globals['_GETBYUSERIDRESPONSE']._serialized_start=294
-  _globals['_GETBYUSERIDRESPONSE']._serialized_end=347
-  _globals['_SHOPSERVICE']._serialized_start=350
-  _globals['_SHOPSERVICE']._serialized_end=534
+  _globals['_SHOPSERVICE']._serialized_start=260
+  _globals['_SHOPSERVICE']._serialized_end=374
 # @@protoc_insertion_point(module_scope)
